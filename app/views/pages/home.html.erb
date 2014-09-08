@@ -1,0 +1,72 @@
+<div class="jumbotron">
+	<h2><%= current_user.name if current_user %></h2>
+	<h1>Welcome to Congresspeople Finder!</h1>
+	<% if current_user %>
+		<%= link_to 'sign out', destroy_user_session_path, method: :delete, class: 'btn btn-primary' %>
+		<% else %>
+		<%= link_to 'sign up', new_user_registration_path, class: 'btn btn-success' %> or  
+		<%= link_to 'sign in', new_user_session_path, class: 'btn btn-default' %> to continue 
+	<% end %>
+</div>
+
+<% if current_user %>
+	<h1 class='center'>Your Congresspeople</h1>
+	<div class="col-md-4">
+		<div class="senator">
+			<h2> House Rep </h2>
+			<div class="senatorPhoto">
+				<%= image_tag("congressmenimages/#{@house_rep.bioguide_id}.jpg", class: 'fadeinleft') %>
+			</div>
+			<ul class='congressInfo'>
+			<li><strong>Name</strong>: <%= @house_rep.first_name %> <%= @house_rep.last_name %></li>
+			<li><strong>Twitter Id</strong>: <%= link_to @house_rep.twitter_id, "http://twitter.com/#{@house_rep.twitter_id}" %></li>
+			<li><strong>Phone</strong>: <%= @house_rep.phone %></li>
+			<li><strong>Email</strong>: <%= mail_to @house_rep.oc_email %></li>
+			<li><strong>Address</strong>: <%= @house_rep.office %></li>
+			<li><strong>State</strong>: <%= @house_rep.state %></li>
+			<li><strong>Website</strong>: <%= link_to @house_rep.website, @house_rep.website %></li>
+			</ul>
+		</div>
+	</div>
+	
+	<div class="col-md-4">
+		<div class="senator">
+			<h2> Senator 1 </h2>
+			<div class="senatorPhoto">
+				<%= image_tag("congressmenimages/#{@senator1.bioguide_id}.jpg", class: 'fadeindown') %>
+			</div>
+			<ul class='congressInfo'>
+			<li><strong>Name</strong>: <%= @senator1.first_name %> <%= @senator1.last_name %></li>
+			<li><strong>Twitter Id</strong>: <%= link_to @senator1.twitter_id, "http://twitter.com/#{@senator1.twitter_id}" %></li>
+			<li><strong>Phone</strong>: <%= @senator1.phone %></li>
+			<li><strong>Email</strong>: <%= mail_to @senator1.oc_email %></li>
+			<li><strong>Address</strong>: <%= @senator1.office %></li>
+			<li><strong>State</strong>: <%= @senator1.state %></li>
+			<li><strong>Website</strong>: <%= link_to @senator1.website, @senator1.website %></li>
+			</ul>
+		</div>
+	</div>
+	
+<div class="col-md-4">
+	<div class="senator">
+		<h2> Senator 2 </h2>
+		<div class="senatorPhoto">
+			<%= image_tag("congressmenimages/#{@senator2.bioguide_id}.jpg", class: 'fadeinright') %>
+		</div>
+		<ul class='congressInfo'>
+		<li><strong>Name</strong>: <%= @senator2.first_name %> <%= @senator2.last_name %></li>
+		<li><strong>Twitter Id</strong>: <%= link_to @senator2.twitter_id, "http://twitter.com/#{@senator2.twitter_id}" %></li>
+		<li><strong>Phone</strong>: <%= @senator2.phone %></li>
+		<li><strong>Email</strong>: <%= mail_to @senator2.oc_email %></li>
+		<li><strong>Address</strong>: <%= @senator2.office %></li>
+		<li><strong>State</strong>: <%= @senator2.state %></li>
+		<li><strong>Website</strong>: <%= link_to @senator2.website, @senator2.website %></li>
+		</ul>
+	</div>
+</div>
+
+
+<% end %>
+
+
+
